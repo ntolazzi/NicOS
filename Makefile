@@ -1,5 +1,5 @@
-GCCPARAMS = -std=gnu99 -ffreestanding -O2 -Wall -Wextra
-GPPPARAMS = -ffreestanding -O2 -Wall -Wextra -fno-exceptions -fno-rtti
+GCCPARAMS = -std=gnu99 -ffreestanding -O2 -Wall -Wextra -g3
+GPPPARAMS = -ffreestanding -O2 -Wall -Wextra -fno-exceptions -fno-rtti -g3
 LDPARAMS = -ffreestanding -O2 -nostdlib -lgcc
 ASPARAMS =
 COMPILER_PATH = compiler/bin
