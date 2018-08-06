@@ -3,7 +3,7 @@ GPPPARAMS = -ffreestanding -O2 -Wall -Wextra -fno-exceptions -fno-rtti -g3
 LDPARAMS = -ffreestanding -O2 -nostdlib -lgcc
 ASPARAMS =
 COMPILER_PATH = compiler/bin
-objects = boot.o kernel.o terminal.o
+objects = boot.o kernel.o terminal.o stdlib.o
 VPATH = src
 BUILDDIR = bin
 
@@ -24,6 +24,7 @@ all:
 	mkdir -p bin
 	make bin/boot.o
 	make bin/kernel.o
+	make bin/stdlib.o
 	make bin/terminal.o
 	make NicOS.bin
 
