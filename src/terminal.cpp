@@ -45,10 +45,23 @@ void Terminal::putChar(char c)
         }
         if(currentRow >= ROWS)
         {
-            currentCol=0;
-            currentRow=0;
+            scrollLine();
+            currentRow--;
         }
     }
+}
+
+void Terminal::scrollLine()
+{
+    for(int i=0;i<COLS*(ROWS);i++)
+    {
+        VideoMemory[i] = VideoMemory[i+COLS];
+    }
+    //for(int i=COLS*(ROWS-1); i<COLS*ROWS;i++)
+    //{
+        //VideoMemory[i] == ((uint16_t)Color <<8) | ' ';
+    //}
+
 }
 
 void Terminal::writeTo(char* str, uint8_t col,uint8_t row)

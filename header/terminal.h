@@ -21,6 +21,7 @@ class Terminal
     private:
         uint16_t* VideoMemory;
         void putChar(char);
+        void scrollLine();
         uint8_t currentCol;
         uint8_t currentRow;
         uint8_t Color;
