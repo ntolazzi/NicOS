@@ -18,10 +18,10 @@ class Terminal
         void resetColor();
         void writeTo(char*, uint8_t, uint8_t);
     private:
+        uint16_t* VideoMemory;
         void putChar(char);
         uint8_t currentCol;
         uint8_t currentRow;
-        uint16_t* VideoMemory;
         uint8_t Color;
 };
 

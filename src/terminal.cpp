@@ -7,7 +7,6 @@ Terminal::~Terminal(){}
 
 void Terminal::clear()
 {
-    uint16_t* VideoMemory = (uint16_t*)0xb8000;
     for(int col=0; col<COLS;col++){
         for(int row =0; row<ROWS;row++){
             unsigned int index = COLS*row+col;
