@@ -63,26 +63,32 @@ void Terminal::writeTo(char* str, uint8_t col,uint8_t row)
     //currentCol = colBefore;
 }
 
-void Terminal::print(char* str, bool colorful)
+void Terminal::print(char* str)
+{
+    resetColor();
+    for(int i=0; str[i]!='\0';i++)
+    {
+        putChar(str[i]);
+    }
+}
+
+void Terminal::printColorful(char* str)
 {
     unsigned int color_wheel = 1;
     uint8_t fg;
     uint8_t bg = 0;
     for(int i=0; str[i]!='\0';i++)
     {
-        if(colorful)
+        fg = color_wheel;
+        if(color_wheel>14)
         {
-            fg = color_wheel;
-            if(color_wheel>14)
-            {
-                color_wheel = 0;
-                bg++;
-            }
-            if(bg>14)
-                bg=0;
-            setColor(fg, 0);
-            color_wheel++;
+            color_wheel = 0;
+            bg++;
         }
+        if(bg>14)
+            bg=0;
+        setColor(fg, 0);
+        color_wheel++;
         putChar(str[i]);
     }
 }

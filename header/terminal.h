@@ -13,7 +13,8 @@ class Terminal
         Terminal();
         ~Terminal();
         void clear();
-        void print(char*, bool);
+        void print(char*);
+        void printColorful(char*);
         void setColor(uint8_t, uint8_t);
         void resetColor();
         void writeTo(char*, uint8_t, uint8_t);
