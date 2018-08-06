@@ -6,7 +6,7 @@ extern "C" void kernel_main(void* multiboot, uint16_t magicnumber){
     terminal.clear();
     terminal.printColorful("Welcome to NicOS!!\n\nThis is my personal learning OS and will probably never be useful!\n\n");
     char buf[10];
-    for(int i=0;i<20;i++)
+    for(int i=-10;i<11;i++)
     {
         itoa(i, buf);
         terminal.print(buf);

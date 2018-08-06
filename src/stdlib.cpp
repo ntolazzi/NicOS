@@ -27,7 +27,10 @@ void itoa(int num, char* buffer)
 {
     int i = 0;
     bool isNeg = false;
-    if(num<0) isNeg = true;
+    if(num<0){
+        isNeg = true;
+        num = -num;
+    }
 
     /*Handle special case of 0*/
     if(num==0)
@@ -46,6 +49,7 @@ void itoa(int num, char* buffer)
         i++;
         num = num/10;
     }
+    if(isNeg) buffer[i++] = '-';
     buffer[i] = '\0'; //Add terminating char
     reverse(buffer);
     return;
