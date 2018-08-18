@@ -1,5 +1,7 @@
 #include "../header/terminal.h"
 #include "../header/stdlib.h"
+#include <stdint.h>
+#include "../header/ports.h"
 
 extern "C" void kernel_main(void* multiboot, uint16_t magicnumber){
     Terminal terminal;
@@ -12,6 +14,9 @@ extern "C" void kernel_main(void* multiboot, uint16_t magicnumber){
         terminal.print(buf);
         terminal.print("\n");
     }
+    
+    terminal.moveCursor(5, 5);
+    
 
     //while(1);
 }

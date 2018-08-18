@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include "ports.h"
 
 class Terminal
 {
@@ -18,8 +19,11 @@ class Terminal
         void setColor(uint8_t, uint8_t);
         void resetColor();
         void writeTo(char*, uint8_t, uint8_t);
+        void moveCursor(int, int);
     private:
         uint16_t* VideoMemory;
+        Port8Bit fb_control;
+        Port8Bit fb_data;
         void putChar(char);
         void scrollLine();
         uint8_t currentCol;

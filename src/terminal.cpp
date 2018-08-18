@@ -1,7 +1,7 @@
 #include "../header/terminal.h"
 
 Terminal::Terminal()
-    : Color(0x0F), VideoMemory((uint16_t*)0xb8000) {}
+    : Color(0x0F), VideoMemory((uint16_t*)0xb8000), fb_control(0x3D4), fb_data(0x3D5) {}
 
 Terminal::~Terminal(){}
 
@@ -74,6 +74,15 @@ void Terminal::writeTo(char* str, uint8_t col,uint8_t row)
         putChar(str[i]);
     //currentRow = rowBefore;
     //currentCol = colBefore;
+}
+
+void Terminal::moveCursor(int x, int y)
+{
+    unsigned int index = COLS*y+x;
+    fb_control.Write(0x0F);
+    fb_data.Write((uint8_t) (165 & 0xFF));
+    fb_control.Write(0x0E);
+    fb_data.Write((uint8_t) ((165 >> 8) & 0xFF));
 }
 
 void Terminal::print(char* str)
