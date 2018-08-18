@@ -42,11 +42,11 @@ void load_gdt()
     };
     asm volatile("lgdt %0" : : "m" (gdtp));
     /* Reload registers */
-    asm volatile("mov $0x10, %eax");
+    asm volatile("mov $0x08, %eax"); //0x08 point at the new data selector
     asm volatile("mov %eax, %ds");
     asm volatile("mov %eax, %es");
     asm volatile("mov %eax, %fs");
     asm volatile("mov %eax, %gs");
-    //asm volatile("mov %eax, %ss");
-    //asm volatile("ljmpl $0x08, $1f\n\t 1:");
+    asm volatile("mov %eax, %ss");
+    asm volatile("ljmpl $0x10, $1f\n\t 1:"); //points at the new code selector
 }
