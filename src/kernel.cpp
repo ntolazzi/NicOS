@@ -2,8 +2,10 @@
 #include "../header/stdlib.h"
 #include <stdint.h>
 #include "../header/ports.h"
+#include "../header/gdt.h"
 
 extern "C" void kernel_main(void* multiboot, uint16_t magicnumber){
+    load_gdt();
     Terminal terminal;
     terminal.clear();
     terminal.printColorful("Welcome to NicOS!!\n\nThis is my personal learning OS and will probably never be useful!\n\n");
