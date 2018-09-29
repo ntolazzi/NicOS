@@ -17,9 +17,6 @@ $(BUILDDIR)/%.o: %.s
 	$(COMPILER_PATH)/i686-elf-as $(ASPARAMS) -o $@ $<
 
 
-clean:
-	rm -rf bin
-
 all:
 	mkdir -p bin
 	make bin/boot.o
@@ -29,6 +26,8 @@ all:
 	make bin/ports.o
 	make bin/gdt.o
 	make NicOS.bin
+
+	rm -rf bin
 
 
 NicOS.bin:
